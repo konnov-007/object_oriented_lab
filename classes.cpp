@@ -41,9 +41,29 @@ class Dot: public Figure{
 		void draw(int color){
 			setcolor(color);
 			for(int i=1; i<=size; ++i)
-				circle(x,y,i);
+				circle(x, y, i);
 		}
 		Dot(int x, int y, int color, int size,int speed):Figure(x,y,color,size,speed){
+			draw(color);
+		}
+		
+		void move(){
+			draw(0);
+			shift();
+			draw(color);
+		}
+};
+
+
+
+class Line: public Figure{
+		public:
+		void draw(int color){
+			setcolor(color);
+			moveto(x, y);
+			lineto(x+20+(size*20), y+55+(size*20));
+		}
+		Line(int x, int y, int color, int size,int speed):Figure(x,y,color,size,speed){
 			draw(color);
 		}
 		
