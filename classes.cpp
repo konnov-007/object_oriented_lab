@@ -1,4 +1,4 @@
-#define SCREENSIZE 300
+#define SCREENSIZE 600
 #include <graphics.h>
 
 
@@ -36,6 +36,9 @@ class Figure{
 		}
 };
 
+
+
+
 class Dot: public Figure{
 	public:
 		void draw(int color){
@@ -57,13 +60,118 @@ class Dot: public Figure{
 
 
 class Line: public Figure{
-		public:
+	public:
 		void draw(int color){
 			setcolor(color);
 			moveto(x, y);
 			lineto(x+20+(size*20), y+55+(size*20));
 		}
 		Line(int x, int y, int color, int size,int speed):Figure(x,y,color,size,speed){
+			draw(color);
+		}
+		
+		void move(){
+			draw(0);
+			shift();
+			draw(color);
+		}
+};
+
+
+class Circle: public Figure{
+	public:
+		void draw(int color){
+			setcolor(color);
+			circle(x, y, 10*size);
+		}
+		Circle(int x, int y, int color, int size, int speed):Figure(x,y,color,size,speed){
+			draw(color);
+		}
+		
+		void move(){
+			draw(0);
+			shift();
+			draw(color);
+		}
+};
+
+
+
+class Triangle: public Figure{
+	public:
+		void draw(int color){
+			setcolor(color);
+			moveto(x, y);
+			lineto(x+15+(size*10), y-25+(size*10));
+			lineto(x+30+(size*10), y+(size*10));
+			lineto(x, y);
+		}
+		Triangle(int x, int y, int color, int size, int speed):Figure(x,y,color,size,speed){
+			draw(color);
+		}
+		
+		void move(){
+			draw(0);
+			shift();
+			draw(color);
+		}
+};
+
+
+class Rectangle1: public Figure{
+	public:
+		void draw(int color){
+			setcolor(color);
+			moveto(x, y);
+			lineto(x+60+(size*10), y);
+			lineto(x+60+(size*10), y+25+(size*10));
+			lineto(x, y+25+(size*10));
+			lineto(x, y);
+		}
+		Rectangle1(int x, int y, int color, int size, int speed):Figure(x,y,color,size,speed){
+			draw(color);
+		}
+		
+		void move(){
+			draw(0);
+			shift();
+			draw(color);
+		}
+};
+
+
+
+class Rhombus: public Figure{
+	public:
+		void draw(int color){
+			setcolor(color);
+			moveto(x, y);
+			lineto(x+20+(size*10), y-50-(size*10));
+			lineto(x+40+2*(size*10), y);
+			lineto(x+20+(size*10), y+50+(size*10));
+			lineto(x, y);
+		}
+		Rhombus(int x, int y, int color, int size, int speed):Figure(x,y,color,size,speed){
+			draw(color);
+		}
+		
+		void move(){
+			draw(0);
+			shift();
+			draw(color);
+		}
+};
+
+
+class Ellipse1: public Figure{
+	private:
+		int stangle = 0, endangle = 360, xradius = 40, yradius = 20;
+	public:
+		void draw(int color){
+			setcolor(color);
+			ellipse(x, y, stangle, endangle, xradius+(size*10), yradius+(size*10));
+		}
+		Ellipse1(int x, int y, int color, int size, int speed):Figure(x,y,color,size,speed){
 			draw(color);
 		}
 		
